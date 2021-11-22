@@ -7,11 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name = "continents")
+@SQLDelete(sql= "UPDATE continents SET deleted = true WHERE id=?")
+@Where(clause= "deleted=false")
 public class ContinentEntity {
 	
 	@Id
@@ -20,10 +25,9 @@ public class ContinentEntity {
 	
 	private String title;
 	
-	private String locations;
-	
 	@Column(name = "image_url")
 	private String imageUrl;
 	
+	private boolean deleted = Boolean.FALSE;
 	
 }

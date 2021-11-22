@@ -1,17 +1,34 @@
 package com.alkemy.icon.entity;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
+import com.alkemy.icon.dto.IconDTO;
 
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name = "locations")
+@SQLDelete(sql= "UPDATE locations SET deleted = true WHERE id=?")
+@Where(clause= "deleted=false")
 public class LocationEntity {
 	
 	@Id
@@ -23,13 +40,35 @@ public class LocationEntity {
 	private Long population;
 	
 	@Column(name = "area_in_m2")
-	private Long area;
+	private Long area; //m2
 	
-	private String icons;
+	//private String icons;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+	@JoinColumn(name = "continent_id", insertable = false, updatable = false)
+	private ContinentEntity continent;
+	
+	@Column(name = "continent_id", nullable = false)
+	private Long continentId;
 	
 	@Column(name = "image_url")
 	private String imageUrl;
 	
-	@Column(name = "continent_id")
-	private Long continentId;
+	private boolean deleted = Boolean.FALSE;
+	
+	@ManyToMany(
+		cascade = {
+				CascadeType.PERSIST,
+				CascadeType.MERGE 
+		}
+	)
+	
+	@JoinTable(
+			name = "icon_location",
+			joinColumns = @JoinColumn(name = "location_id"),
+			inverseJoinColumns = @JoinColumn(name = "icon_id")
+			)
+		private Set<IconEntity> icons = new HashSet<IconEntity>();
+
+	
 }

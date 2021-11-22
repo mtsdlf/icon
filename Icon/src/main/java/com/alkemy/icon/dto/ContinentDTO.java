@@ -8,7 +8,6 @@ import lombok.Setter;
 public class ContinentDTO {
 	private Long id;
 	private String title;
-	private String locations;
 	private String imageUrl;
 
 }

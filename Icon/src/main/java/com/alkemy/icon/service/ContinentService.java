@@ -6,7 +6,13 @@ import com.alkemy.icon.dto.ContinentDTO;
 
 public interface ContinentService {
 	
-	ContinentDTO save(ContinentDTO dto);
+	ContinentDTO getDetailsById(Long id);
 	
-	List<ContinentDTO> getAllContinents();
+	List<ContinentDTO> getAll();
+	
+	ContinentDTO save(ContinentDTO continent);
+	
+	ContinentDTO update(Long id, ContinentDTO continent);
+	
+	void delete(Long id);
 }

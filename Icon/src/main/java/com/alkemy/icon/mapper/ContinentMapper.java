@@ -11,27 +11,25 @@ import com.alkemy.icon.entity.ContinentEntity;
 @Component
 public class ContinentMapper {
 	
-	public ContinentEntity continent2Entity(ContinentDTO dto) {
+	public ContinentEntity continentDTO2Entity(ContinentDTO dto) {
 			ContinentEntity continentEntity = new ContinentEntity();
 			continentEntity.setTitle(dto.getTitle());
-			continentEntity.setLocations(dto.getLocations());
 			continentEntity.setImageUrl(dto.getImageUrl());
 			return continentEntity;
 	}
 
-	public ContinentDTO continentEntity2dto(ContinentEntity entity) {
+	public ContinentDTO continentEntity2DTO(ContinentEntity entity) {
 		ContinentDTO dto = new ContinentDTO();
 		dto.setId(entity.getId());
 		dto.setTitle(entity.getTitle());
-		dto.setLocations(entity.getLocations());
 		dto.setImageUrl(entity.getImageUrl());
 		return dto;
 	}
 
-	public List<ContinentDTO> continentEntityList2dtoList(List<ContinentEntity> entities) {
+	public List<ContinentDTO> continentEntityList2DTOList(List<ContinentEntity> entities) {
 		List<ContinentDTO> dtos = new ArrayList<>();
 		for (ContinentEntity entity : entities) {
-			dtos.add(this.continentEntity2dto(entity));
+			dtos.add(this.continentEntity2DTO(entity));
 		}
 		return dtos;
 	}
