@@ -64,9 +64,9 @@ public class LocationEntity {
 	)
 	
 	@JoinTable(
-			name = "icon_location",
-			joinColumns = @JoinColumn(name = "location_id"),
-			inverseJoinColumns = @JoinColumn(name = "icon_id")
+			name = "icons_locations",
+			joinColumns = @JoinColumn(name = "locations_id", referencedColumnName="id"),
+			inverseJoinColumns = @JoinColumn(name = "icons_id", referencedColumnName="id")
 			)
 		private Set<IconEntity> icons = new HashSet<IconEntity>();
 
