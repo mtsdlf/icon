@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class LocationFiltersDTO {
+public class CityFiltersDTO {
 	private String name;
 	private Long continent;
 	private String order;

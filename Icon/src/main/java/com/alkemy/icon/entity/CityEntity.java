@@ -25,10 +25,10 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "locations")
-@SQLDelete(sql= "UPDATE locations SET deleted = true WHERE id=?")
+@Table(name = "cities")
+@SQLDelete(sql= "UPDATE cities SET deleted = true WHERE id=?")
 @Where(clause= "deleted=false")
-public class LocationEntity {
+public class CityEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -63,9 +63,9 @@ public class LocationEntity {
 		}
 	)
 	@JoinTable(
-			name = "icons_locations",
-			joinColumns = @JoinColumn(name = "locations_id", referencedColumnName="id"),
-			inverseJoinColumns = @JoinColumn(name = "icons_id", referencedColumnName="id")
+			name = "icons_cities",
+			joinColumns = @JoinColumn(name = "icons_id", referencedColumnName="id"),
+			inverseJoinColumns = @JoinColumn(name = "cities_id", referencedColumnName="id")
 	)
 	private Set<IconEntity> icons = new HashSet<IconEntity>();
 

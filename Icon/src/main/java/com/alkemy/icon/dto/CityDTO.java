@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LocationDTO {
+public class CityDTO {
 	private Long id;
 	@NotEmpty
 	private String title;

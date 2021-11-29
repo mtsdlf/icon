@@ -19,56 +19,56 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alkemy.icon.dto.IconDTO;
-import com.alkemy.icon.dto.LocationBasicDTO;
-import com.alkemy.icon.dto.LocationDTO;
-import com.alkemy.icon.service.LocationService;
+import com.alkemy.icon.dto.CityBasicDTO;
+import com.alkemy.icon.dto.CityDTO;
+import com.alkemy.icon.service.CityService;
 
 @RestController
-@RequestMapping("locations")
-public class LocationController {
+@RequestMapping("cities")
+public class CityController {
 	
-	private LocationService locationService;
+	private CityService cityService;
 	
 	@Autowired
-	LocationController(LocationService locationService) {
-		this.locationService = locationService;
+	CityController(CityService cityService) {
+		this.cityService = cityService;
 	}
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<LocationBasicDTO>> getAll() {
-		List<LocationBasicDTO> locations = locationService.getAll();
+	public ResponseEntity<List<CityBasicDTO>> getAll() {
+		List<CityBasicDTO> locations = cityService.getAll();
 		return ResponseEntity.ok(locations);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<LocationDTO> getDetailsById(
+	public ResponseEntity<CityDTO> getDetailsById(
 			@Valid @PathVariable Long id) {
-		LocationDTO location = this.locationService.getDetailsById(id);
+		CityDTO location = this.cityService.getDetailsById(id);
 		return ResponseEntity.ok(location);
 	}	
 	
 	@GetMapping
-	public ResponseEntity<List<LocationDTO>> getDetailsByFilters(
+	public ResponseEntity<List<CityDTO>> getDetailsByFilters(
 			@Valid @RequestParam(required = false) String name, 
 			@Valid @RequestParam(required = false) Long continent,
 			@Valid @RequestParam(required = false, defaultValue = "ASC") String order
 	) {
-		List<LocationDTO> locations = this.locationService.getByFilters(name, continent, order); 
+		List<CityDTO> locations = this.cityService.getByFilters(name, continent, order); 
 		return ResponseEntity.ok(locations);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<LocationDTO> update (
+	public ResponseEntity<CityDTO> update (
 			@Valid @PathVariable Long id,
-			@RequestBody LocationDTO location) {
-		LocationDTO result = this.locationService.update(id, location);
+			@RequestBody CityDTO location) {
+		CityDTO result = this.cityService.update(id, location);
 		return ResponseEntity.ok(result);
 	}	
 	
 	@PostMapping
-	public ResponseEntity<LocationDTO> save(
-			@Valid @RequestBody LocationDTO location) {
-		LocationDTO result = locationService.save(location);
+	public ResponseEntity<CityDTO> save(
+			@Valid @RequestBody CityDTO location) {
+		CityDTO result = cityService.save(location);
 		return ResponseEntity.status(HttpStatus.CREATED).body(result);
 	}
 	
@@ -76,7 +76,7 @@ public class LocationController {
 	public ResponseEntity<Void> addIcon(
 			@Valid @PathVariable Long id, 
 			@PathVariable Long idIcon){
-		this.locationService.addIcon(id, idIcon);
+		this.cityService.addIcon(id, idIcon);
 		return ResponseEntity.status(HttpStatus.CREATED).build();	
 	}
 
@@ -84,14 +84,14 @@ public class LocationController {
 	public ResponseEntity<Void> delete(
 			@Valid @PathVariable Long id, 
 			@Valid @PathVariable Long idIcon) {
-		this.locationService.removeIcon(id, idIcon);
+		this.cityService.removeIcon(id, idIcon);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> delete(
 			@Valid @PathVariable Long id) {
-		this.locationService.delete(id);
+		this.cityService.delete(id);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	

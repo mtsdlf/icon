@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.alkemy.icon.dto.ContinentDTO;
 import com.alkemy.icon.entity.ContinentEntity;
-import com.alkemy.icon.entity.LocationEntity;
+import com.alkemy.icon.entity.CityEntity;
 import com.alkemy.icon.exceptions.ParamNotFound;
 import com.alkemy.icon.mapper.ContinentMapper;
 import com.alkemy.icon.repository.ContinentRepository;

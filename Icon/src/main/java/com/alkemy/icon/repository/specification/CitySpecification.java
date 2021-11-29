@@ -10,13 +10,13 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import com.alkemy.icon.dto.LocationFiltersDTO;
-import com.alkemy.icon.entity.LocationEntity;
+import com.alkemy.icon.dto.CityFiltersDTO;
+import com.alkemy.icon.entity.CityEntity;
 
 @Component
-public class LocationSpecification {
+public class CitySpecification {
 	
-	public Specification<LocationEntity> getByFilters(LocationFiltersDTO filtersDTO) {
+	public Specification<CityEntity> getByFilters(CityFiltersDTO filtersDTO) {
 		return (root, query, criteriaBuilder) -> {
 		
 			List<Predicate> predicates = new ArrayList<>();

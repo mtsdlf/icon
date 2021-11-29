@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-	public class LocationBasicDTO {
+	public class CityBasicDTO {
 	private Long id;
 	private String title;
 	private String imageUrl;

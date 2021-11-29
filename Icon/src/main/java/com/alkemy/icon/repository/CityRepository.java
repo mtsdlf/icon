@@ -6,11 +6,11 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.alkemy.icon.entity.LocationEntity;
+import com.alkemy.icon.entity.CityEntity;
 
 @Repository
-public interface LocationRepository extends JpaRepository<LocationEntity, Long> {
+public interface CityRepository extends JpaRepository<CityEntity, Long> {
 
-	List<LocationEntity> findAll(Specification<LocationEntity> spec);
+	List<CityEntity> findAll(Specification<CityEntity> spec);
 	
 }

@@ -80,7 +80,7 @@ public class IconServiceImpl implements IconService{
 		
 		this.iconMapper.iconEntityRefreshValues(entity.get(), icon);
 		IconEntity updatedEntity= this.iconRepository.save(entity.get());
-		IconDTO result = iconMapper.iconEntity2DTO(updatedEntity, false);
+		IconDTO result = iconMapper.iconEntity2DTO(updatedEntity, true);
 		return result;
 	} 
 	

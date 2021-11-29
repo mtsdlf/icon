@@ -6,7 +6,7 @@ import java.util.Set;
 import com.alkemy.icon.dto.IconBasicDTO;
 import com.alkemy.icon.dto.IconDTO;
 import com.alkemy.icon.entity.IconEntity;
-import com.alkemy.icon.entity.LocationEntity;
+import com.alkemy.icon.entity.CityEntity;
 
 public interface IconService {
 	

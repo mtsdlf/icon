@@ -45,7 +45,7 @@ public class IconEntity {
 	private LocalDate buildingDate;
 	
 	@ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL, fetch= FetchType.LAZY)
-	private List<LocationEntity> locations = new ArrayList<>();
+	private List<CityEntity> cities = new ArrayList<>();
 	
 	@Column(name = "image_url")
 	private String imageUrl;

@@ -17,7 +17,7 @@ import org.springframework.util.StringUtils;
 
 import com.alkemy.icon.dto.IconFiltersDTO;
 import com.alkemy.icon.entity.IconEntity;
-import com.alkemy.icon.entity.LocationEntity;
+import com.alkemy.icon.entity.CityEntity;
 
 @Component
 public class IconSpecification {
@@ -48,7 +48,7 @@ public class IconSpecification {
 			}
 			
 			if (!CollectionUtils.isEmpty(filtersDTO.getCities())) {
-				Join<LocationEntity, IconEntity> join = root.join("locations", JoinType.INNER);
+				Join<CityEntity, IconEntity> join = root.join("locations", JoinType.INNER);
 				Expression<String> citiesId = join.get("id");
 				predicates.add(citiesId.in(filtersDTO.getCities()));
 			}

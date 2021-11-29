@@ -8,19 +8,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alkemy.icon.dto.IconBasicDTO;
 import com.alkemy.icon.dto.IconDTO;
-import com.alkemy.icon.dto.LocationDTO;
+import com.alkemy.icon.dto.CityDTO;
 import com.alkemy.icon.entity.IconEntity;
 
 @Component
 public class IconMapper {
-	
-	@Autowired
-	private LocationMapper locationMapper;
+	private CityMapper cityMapper = new CityMapper();
 	
 	public void iconEntityRefreshValues(IconEntity entity, IconDTO dto) {
 		entity.setTitle(dto.getTitle());
@@ -43,16 +40,16 @@ public class IconMapper {
 			return entity;
 	}
 	
-	public IconDTO iconEntity2DTO(IconEntity entity, boolean loadLocations) {
+	public IconDTO iconEntity2DTO(IconEntity entity, boolean loadCities) {
 		IconDTO dto = new IconDTO();
 		dto.setId(entity.getId());
 		dto.setTitle(entity.getTitle());
 		dto.setDescription(entity.getDescription());
 		dto.setHeight(entity.getHeight());
 		dto.setBuildingDate(entity.getBuildingDate().toString());
-		if (loadLocations) {
-			List<LocationDTO> locationDTOS = this.locationMapper.locationEntityList2DTOList(entity.getLocations(), false);
-			dto.setLocations(locationDTOS);
+		if (loadCities) {
+			List<CityDTO> citiesDTOS = this.cityMapper.citiesEntityList2DTOList(entity.getCities(), false);
+			dto.setCities(citiesDTOS);
 		} 
 		dto.setImageUrl(entity.getImageUrl());
 		return dto;
@@ -69,9 +66,9 @@ public class IconMapper {
 
 	/** 
 	 * @param entities (Set or List)
-	 * @param loadLocations
+	 * @param loadCities
 	 */
-	public List<IconDTO> iconEntitySet2DTOList(Collection<IconEntity> entities, boolean loadLocations) {
+	public List<IconDTO> iconEntitySet2DTOList(Collection<IconEntity> entities, boolean loadCities) {
 		List<IconDTO> dtos = new ArrayList<>();
 		for (IconEntity entity : entities) {
 			dtos.add(this.iconEntity2DTO(entity, false));
