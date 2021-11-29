@@ -3,22 +3,20 @@ package com.alkemy.icon.service.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.alkemy.icon.dto.IconDTO;
 import com.alkemy.icon.dto.CityBasicDTO;
 import com.alkemy.icon.dto.CityDTO;
 import com.alkemy.icon.dto.CityFiltersDTO;
-import com.alkemy.icon.entity.IconEntity;
 import com.alkemy.icon.entity.CityEntity;
+import com.alkemy.icon.entity.IconEntity;
 import com.alkemy.icon.exceptions.ParamNotFound;
 import com.alkemy.icon.mapper.CityMapper;
 import com.alkemy.icon.repository.CityRepository;
 import com.alkemy.icon.repository.specification.CitySpecification;
-import com.alkemy.icon.service.IconService;
 import com.alkemy.icon.service.CityService;
+import com.alkemy.icon.service.IconService;
 
 @Service
 public class CityServiceImpl implements CityService{

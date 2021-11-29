@@ -2,16 +2,14 @@ package com.alkemy.icon.mapper;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.alkemy.icon.dto.IconDTO;
 import com.alkemy.icon.dto.CityBasicDTO;
 import com.alkemy.icon.dto.CityDTO;
-import com.alkemy.icon.entity.IconEntity;
+import com.alkemy.icon.dto.IconDTO;
 import com.alkemy.icon.entity.CityEntity;
 
 @Component

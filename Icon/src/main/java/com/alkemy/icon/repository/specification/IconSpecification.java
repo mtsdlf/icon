@@ -55,14 +55,6 @@ public class IconSpecification {
 			
 			//remove duplicates
 			query.distinct(true);
-				
-			//order resolver
-			String orderByField = "title";
-			query.orderBy(
-					filtersDTO.isAsc() ?
-							criteriaBuilder.asc(root.get(orderByField)) :
-							criteriaBuilder.desc(root.get(orderByField))
-			);
 			
 			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 	};

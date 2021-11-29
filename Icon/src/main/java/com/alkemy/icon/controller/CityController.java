@@ -1,7 +1,6 @@
 package com.alkemy.icon.controller;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alkemy.icon.dto.IconDTO;
 import com.alkemy.icon.dto.CityBasicDTO;
 import com.alkemy.icon.dto.CityDTO;
 import com.alkemy.icon.service.CityService;
