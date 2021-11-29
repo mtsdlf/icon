@@ -1,9 +1,9 @@
 package com.alkemy.icon.dto;
 
 import java.util.List;
-import java.util.Set;
 
-import com.alkemy.icon.entity.IconEntity;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,11 +12,14 @@ import lombok.Setter;
 @Setter
 public class LocationDTO {
 	private Long id;
+	@NotEmpty
 	private String title;
+	private String imageUrl;
+	@Positive
 	private Long population;
+	@Positive
 	private Long area;
 	private List<IconDTO> icons;
-	private String imageUrl;
 	private Long continentId;
 
 }

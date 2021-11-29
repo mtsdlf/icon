@@ -1,6 +1,7 @@
 package com.alkemy.icon.mapper;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.alkemy.icon.dto.IconDTO;
 import com.alkemy.icon.dto.LocationBasicDTO;
 import com.alkemy.icon.dto.LocationDTO;
+import com.alkemy.icon.entity.IconEntity;
 import com.alkemy.icon.entity.LocationEntity;
 
 @Component
@@ -18,8 +20,15 @@ public class LocationMapper {
 	@Autowired
 	private IconMapper iconMapper;
 	
+	public void locationEntityRefreshValues(LocationEntity entity, LocationDTO dto) {
+		entity.setTitle(dto.getTitle());
+		entity.setPopulation(dto.getPopulation());
+		entity.setArea(dto.getArea());
+		entity.setContinentId(dto.getContinentId());
+		entity.setImageUrl(dto.getImageUrl());
+	}
+	
 	public LocationEntity locationDTO2Entity(LocationDTO dto) {
-		System.out.println("2" + dto.toString());
 			LocationEntity locationEntity = new LocationEntity();
 			locationEntity.setTitle(dto.getTitle());
 			locationEntity.setPopulation(dto.getPopulation());
@@ -47,9 +56,20 @@ public class LocationMapper {
 
 	public List<LocationDTO> locationEntityList2DTOList(List<LocationEntity> locationList, Boolean loadIcons) {
 		List<LocationDTO> dtos = new ArrayList<>();
-		System.out.println("locationEntityList2DTOList");
 		for (LocationEntity entity : locationList) {
 			dtos.add(this.locationEntity2DTO(entity, loadIcons));
+		}
+		return dtos;
+	}
+	
+	/** 
+	 * @param entities (Set or List)
+	 * @param loadLocations
+	 */
+	public List<LocationDTO> locationEntitySet2DTOList(Collection<LocationEntity> entities, boolean loadIcons) {
+		List<LocationDTO> dtos = new ArrayList<>();
+		for (LocationEntity entity : entities) {
+			dtos.add(this.locationEntity2DTO(entity, true));
 		}
 		return dtos;
 	}

@@ -1,6 +1,7 @@
 package com.alkemy.icon.exceptions;
 
 public class ParamNotFound extends RuntimeException {
+
 	/**
 	 * 
 	 */

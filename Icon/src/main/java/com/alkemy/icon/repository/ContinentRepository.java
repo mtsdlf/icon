@@ -8,6 +8,4 @@ import com.alkemy.icon.entity.ContinentEntity;
 @Repository
 public interface ContinentRepository extends JpaRepository<ContinentEntity, Long> {
 	
-	
-
 }

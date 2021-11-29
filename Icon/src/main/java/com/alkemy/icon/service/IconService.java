@@ -5,22 +5,23 @@ import java.util.Set;
 
 import com.alkemy.icon.dto.IconBasicDTO;
 import com.alkemy.icon.dto.IconDTO;
+import com.alkemy.icon.entity.IconEntity;
+import com.alkemy.icon.entity.LocationEntity;
 
 public interface IconService {
 	
-	IconDTO getDetailsById(Long id);
-	
 	List<IconBasicDTO> getAll();
 	
-	//List<IconDTO> getByFilters(String name, String date, Set<Long> cities, String order);
+	IconEntity getEntityById(Long id);
 	
-	IconDTO save(IconDTO icon);
+	IconDTO getDetailsById(Long id);
+	
+	List<IconDTO> getByFilters(String name, String date, Set<Long> cities, String order);
 	
 	IconDTO update(Long id, IconDTO icon);
 	
-	void addLocation(Long id, Long idLocation);
-	
-	void removeLocation(Long id, Long idLocation);
+	IconDTO save(IconDTO icon);
 	
 	void delete(Long id);
+	
 }

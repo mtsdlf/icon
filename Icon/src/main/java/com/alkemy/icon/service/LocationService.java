@@ -4,19 +4,24 @@ import java.util.List;
 
 import com.alkemy.icon.dto.LocationBasicDTO;
 import com.alkemy.icon.dto.LocationDTO;
-import com.alkemy.icon.entity.LocationEntity;
 
 public interface LocationService {
 	
-	LocationDTO getDetailsById(Long id);
-	
-	LocationEntity getEntityById(Long id);
-	
 	List<LocationBasicDTO> getAll();
 	
-	LocationDTO save(LocationDTO location);
+	LocationDTO getDetailsById(Long id);
+	
+	List<LocationDTO> getByFilters(String name, Long continent, String order);
 	
 	LocationDTO update(Long id, LocationDTO icon);
+	
+	LocationDTO save(LocationDTO location);
 
+	void addIcon(Long id, Long idIcon);
+	
+	void removeIcon(Long id, Long idIcon);
+	
 	void delete(Long id);
+
+	
 }

@@ -8,9 +8,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class IconBasicDTO {
-
-
 	private Long id;
 	private String title;
 	private String imageUrl;
+	
 }

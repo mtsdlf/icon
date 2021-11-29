@@ -28,14 +28,6 @@ public class ContinentServiceImpl implements ContinentService{
 	}
 
 	@Override
-	public ContinentDTO save(ContinentDTO dto) {
-		ContinentEntity entity = continentMapper.continentDTO2Entity(dto);
-		ContinentEntity entitySaved = continentRepository.save(entity);
-		ContinentDTO result = continentMapper.continentEntity2DTO(entitySaved);
-		return result;
-	}
-
-	@Override
 	public List<ContinentDTO> getAll() {
 		List<ContinentEntity> entities = continentRepository.findAll();
 		List<ContinentDTO> result = continentMapper.continentEntityList2DTOList(entities);
@@ -51,7 +43,7 @@ public class ContinentServiceImpl implements ContinentService{
 		ContinentDTO continentDTO = this.continentMapper.continentEntity2DTO(entity.get());
 		return continentDTO;
 	}
-
+	
 	@Override
 	public ContinentDTO update(Long id, ContinentDTO continent) {
 		Optional<ContinentEntity> oldEntity = Optional.of(this.continentRepository.getById(id));
@@ -64,12 +56,18 @@ public class ContinentServiceImpl implements ContinentService{
 		ContinentDTO result = continentMapper.continentEntity2DTO(entitySaved);
 		return result;
 	}
-
+	
+	@Override
+	public ContinentDTO save(ContinentDTO dto) {
+		ContinentEntity entity = continentMapper.continentDTO2Entity(dto);
+		ContinentEntity entitySaved = continentRepository.save(entity);
+		ContinentDTO result = continentMapper.continentEntity2DTO(entitySaved);
+		return result;
+	}
+	
 	@Override
 	public void delete(Long id) {
 		this.continentRepository.deleteById(id);	
 	}
-
-
 
 }

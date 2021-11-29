@@ -22,6 +22,15 @@ public class IconMapper {
 	@Autowired
 	private LocationMapper locationMapper;
 	
+	public void iconEntityRefreshValues(IconEntity entity, IconDTO dto) {
+		entity.setTitle(dto.getTitle());
+		entity.setDescription(dto.getDescription());
+		entity.setHeight(dto.getHeight());
+		entity.setBuildingDate(
+				this.stringToLocalDate(dto.getBuildingDate())
+		);
+	}
+	
 	public IconEntity iconDTO2Entity(IconDTO dto) {
 			IconEntity entity = new IconEntity();
 			entity.setTitle(dto.getTitle());
@@ -42,36 +51,17 @@ public class IconMapper {
 		dto.setHeight(entity.getHeight());
 		dto.setBuildingDate(entity.getBuildingDate().toString());
 		if (loadLocations) {
-			List<LocationDTO> locationDTOS = this.locationMapper.locationEntityList2DTOList(entity.getLocations(), true);
+			List<LocationDTO> locationDTOS = this.locationMapper.locationEntityList2DTOList(entity.getLocations(), false);
 			dto.setLocations(locationDTOS);
-			System.out.println("test");
-			System.out.println(entity.getLocations().toString());
 		} 
 		dto.setImageUrl(entity.getImageUrl());
 		return dto;
 	}
 	
-	private LocalDate stringToLocalDate(String stringDate) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate date = LocalDate.parse(stringDate, formatter);
-		return date;
-	}
-
-	public void iconEntityRefreshValues(IconEntity entity, IconDTO dto) {
-		entity.setTitle(dto.getTitle());
-		entity.setDescription(dto.getDescription());
-		entity.setHeight(dto.getHeight());
-		entity.setBuildingDate(
-				this.stringToLocalDate(dto.getBuildingDate())
-		);
-	}
-
 	public Set<IconEntity> iconDTOList2Entity(List<IconDTO> dtos) {
-		System.out.println(dtos.toString());
 		Set<IconEntity> entities = new HashSet<>();
 		for (IconDTO dto : dtos) {
 			entities.add(this.iconDTO2Entity(dto));
-			System.out.println("1" + dto.toString());
 		}
 		
 		return entities;
@@ -102,5 +92,10 @@ public class IconMapper {
 		return dtos;
 	}
 	
-}
+	private LocalDate stringToLocalDate(String stringDate) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate date = LocalDate.parse(stringDate, formatter);
+		return date;
+	}
 
+}

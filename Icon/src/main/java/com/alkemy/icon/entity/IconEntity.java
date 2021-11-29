@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -38,10 +40,9 @@ public class IconEntity {
 	@Column(name = "height_in_m")
 	private Long height;
 	
-	
 	@Column(name = "building_date")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private LocalDate BuildingDate;
+	private LocalDate buildingDate;
 	
 	@ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL, fetch= FetchType.LAZY)
 	private List<LocationEntity> locations = new ArrayList<>();
@@ -50,13 +51,5 @@ public class IconEntity {
 	private String imageUrl;
 	
 	private boolean deleted = Boolean.FALSE;
-	
-	public void addLocation(LocationEntity location) {
-		this.locations.add(location);
-	}
-	
-	public void removeLocation(LocationEntity location) {
-		this.locations.remove(location);
-	}
-	
+
 }
