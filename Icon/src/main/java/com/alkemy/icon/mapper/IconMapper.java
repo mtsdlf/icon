@@ -17,6 +17,7 @@ import com.alkemy.icon.entity.IconEntity;
 
 @Component
 public class IconMapper {
+	
 	private CityMapper cityMapper = new CityMapper();
 	
 	public void iconEntityRefreshValues(IconEntity entity, IconDTO dto) {
