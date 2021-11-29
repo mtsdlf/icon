@@ -73,7 +73,6 @@ public class IconServiceImpl implements IconService{
 	
 	@Override
 	public IconDTO update(Long id, IconDTO icon) {
-		//TODO: More Exceptions
 		Optional<IconEntity> entity = this.iconRepository.findById(id);
 		if (!entity.isPresent()) {
 			throw new ParamNotFound("icon id not valid");
