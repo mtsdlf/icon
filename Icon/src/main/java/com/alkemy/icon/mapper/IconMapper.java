@@ -8,17 +8,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.alkemy.icon.dto.CityDTO;
 import com.alkemy.icon.dto.IconBasicDTO;
 import com.alkemy.icon.dto.IconDTO;
-import com.alkemy.icon.dto.CityDTO;
 import com.alkemy.icon.entity.IconEntity;
 
 @Component
 public class IconMapper {
 	
-	private CityMapper cityMapper = new CityMapper();
+	@Autowired
+	private CityMapper cityMapper;
 	
 	public void iconEntityRefreshValues(IconEntity entity, IconDTO dto) {
 		entity.setTitle(dto.getTitle());

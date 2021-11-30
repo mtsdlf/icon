@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import com.alkemy.icon.dto.CityBasicDTO;
@@ -15,9 +16,15 @@ import com.alkemy.icon.entity.CityEntity;
 @Component
 public class CityMapper {
 	
-	@Autowired
+	
 	private IconMapper iconMapper;
 	
+	@Autowired
+	public CityMapper(@Lazy IconMapper iconMapper) {
+	
+		this.iconMapper = iconMapper;
+	}
+
 	public void cityEntityRefreshValues(CityEntity entity, CityDTO dto) {
 		entity.setTitle(dto.getTitle());
 		entity.setPopulation(dto.getPopulation());
