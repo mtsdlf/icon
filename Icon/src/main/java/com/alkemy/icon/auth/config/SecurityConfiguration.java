@@ -1,7 +1,5 @@
 package com.alkemy.icon.auth.config;
 
-import com.alkemy.icon.auth.filter.JwtRequestFilter;
-import com.alkemy.icon.auth.service.UserDetailsCustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +11,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.alkemy.icon.auth.filter.JwtRequestFilter;
+import com.alkemy.icon.auth.service.UserDetailsCustomService;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {

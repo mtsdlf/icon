@@ -16,7 +16,12 @@ import java.util.Collection;
 @Getter
 @Setter
 public class UserEntity implements UserDetails {
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 

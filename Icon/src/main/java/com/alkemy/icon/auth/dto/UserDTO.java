@@ -1,9 +1,9 @@
 package com.alkemy.icon.auth.dto;
 
-import lombok.Data;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
+
+import lombok.Data;
 
 @Data
 public class UserDTO {

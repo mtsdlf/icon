@@ -1,8 +1,7 @@
 package com.alkemy.icon.auth.service;
 
-import com.alkemy.icon.auth.dto.UserDTO;
-import com.alkemy.icon.auth.entity.UserEntity;
-import com.alkemy.icon.auth.repository.UserRepository;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,15 +9,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import com.alkemy.icon.auth.dto.UserDTO;
+import com.alkemy.icon.auth.entity.UserEntity;
+import com.alkemy.icon.auth.repository.UserRepository;
+import com.alkemy.icon.service.EmailService;
 
 @Service
 public class UserDetailsCustomService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-    /*@Autowired
-    private EmailService emailService;*/
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -34,9 +36,9 @@ public class UserDetailsCustomService implements UserDetailsService {
         userEntity.setUsername(userDTO.getUsername());
         userEntity.setPassword(userDTO.getPassword());
         userEntity = this.userRepository.save(userEntity);
-        /*if(userEntity != null) {
+        if(userEntity != null) {
             emailService.sendWelcomeEmailTo(userEntity.getUsername());
-        }*/
+        }
         return userEntity != null;
     }
 
