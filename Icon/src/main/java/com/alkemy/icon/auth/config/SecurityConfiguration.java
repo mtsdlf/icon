@@ -15,6 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.alkemy.icon.auth.filter.JwtRequestFilter;
 import com.alkemy.icon.auth.service.UserDetailsCustomService;
 
+@SuppressWarnings("deprecation")
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
